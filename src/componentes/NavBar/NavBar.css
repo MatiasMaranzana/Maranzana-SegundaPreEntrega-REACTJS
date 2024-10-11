@@ -1,18 +1,19 @@
 header {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-around;
     border-bottom: 1px solid black; 
+    margin-left: 10px;
 }
 
 li {
     display: inline-block;
-    margin: 5px;
+    margin: 20px;
     padding: 15px;
     font-size: 35px;
     font-family: 'Times New Roman', Times, serif;
-    
 }
 img {
     width:100px;
 }
+

@@ -19,11 +19,11 @@ return (
                 </li>
 
                 <li>
-                    <NavLink to="/categoria/proteina"> Proteinas</NavLink>
+                    <NavLink to="/categoria/Proteina"> Proteinas</NavLink>
                 </li>
 
                 <li>
-                    <NavLink to="/categoria/creatina"> Creatina </NavLink> 
+                    <NavLink to="/categoria/Creatina"> Creatina </NavLink> 
                 </li>
                 <li>
                     <NavLink to="/categoria/Multivitaminico"> Multivitaminico </NavLink> 

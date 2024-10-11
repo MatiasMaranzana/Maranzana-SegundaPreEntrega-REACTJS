@@ -1,40 +1,48 @@
-import React from 'react'
-import Contador from '../Contador/Contador'
-import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import React, { useState, useContext } from 'react';
+import { Link } from 'react-router-dom';
+import { CarritoContext } from '../../context/CarritoContext';
+import { toast } from 'react-toastify';
+import Contador from '../Contador/Contador';
+import "./ItemDetail.css" 
 
+const ItemDetail = ({ id, idCat, marca, stock, nombre, presentacion, sabor, precio, img }) => {
+    const [agregarCantidad, setAgregarCantidad] = useState(0);
+    const { agregarAlCarrito } = useContext(CarritoContext);
 
-const ItemDetail = ({id, tipo, marca,stock, nombre, presentacion, sabor, precio, img}) => {
+    const manejadorCantidad = (cantidad) => {
+        setAgregarCantidad(cantidad);
 
-const [agregarCantidad, setAgregarCantidad] = useState(0)
-
-
-
-const manejadorCantidad = (cantidad) => {
-    setAgregarCantidad(cantidad);
-    console.log("Productos agregador:" + cantidad)
-}
+        const item = { id, nombre, precio };
+        agregarAlCarrito(item, cantidad);
+        toast.success("Su compra fue enviada al carrito", { autoClose: 1000, theme: "dark", position: "top-right" });
+    };
 
     return (
-        <div className="card" style={{ width: '20rem' }}>
-        <img src={img} className="card-img-top" alt={nombre} />
-        <div className="card-body">
-            <h5 className="card-title">{nombre}</h5>
-            <p className="card-text">
-                Tipo: {tipo}<br />
-                Marca: {marca}<br />
-                Presentación: {presentacion}<br />
-                Sabor: {sabor}<br />
-                Precio: ${precio}
-                <p>ID: {id} </p>
-            </p>
+        <div className="card mb-3" style={{ display: 'flex', flexDirection: 'row', width: '100%' }}>
+            <img src={img} className="card-img-left" alt={nombre} style={{ width: '30%', objectFit: 'cover' }} />
+            <div className="card-body" style={{ width: '70%' }}>
+                <h5 className="card-title" style={{ fontSize: '3.5rem', lineHeight: '1.5' }}>{nombre}</h5>
+                <p className="card-text" style={{ fontSize: '1.5rem', lineHeight: '1.5' }}>
+                    <strong>Tipo:</strong> {idCat}<br />
+                    <strong>Marca:</strong> {marca}<br />
+                    <strong>Presentación:</strong> {presentacion}<br />
+                    <strong>Sabor:</strong> {sabor}<br />
+                    <strong>Precio:</strong> ${precio}<br />
+                    <strong>Stock:</strong> {stock}<br />
+                    <small>ID: {id}</small>
+                </p>
+                <div className="d-flex align-items-center">
+                    {
+                        agregarCantidad > 0 ? (
+                            <Link to="/cart" className="btn btn-success">Terminar Compra</Link>
+                        ) : (
+                            <Contador inicial={1} stock={stock} funcionAgregar={manejadorCantidad} />
+                        )
+                    }
+                </div>
+            </div>
         </div>
-        {
-        agregarCantidad > 0 ? (<Link to="/cart"> Terminar Compra</Link>) : (<Contador inicial={1} stock={stock} funcionAgregar={manejadorCantidad}/>)
-}
+    );
+};
 
-    </div>
-    )
-}
-
-export default ItemDetail
+export default ItemDetail;

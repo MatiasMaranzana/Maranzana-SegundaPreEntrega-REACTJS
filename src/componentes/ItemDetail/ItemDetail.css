@@ -1,0 +1,13 @@
+.card {
+    border: 1px solid #ddd; 
+    border-radius: 8px; 
+}
+
+.card-title {
+    font-family: 'Arial', sans-serif;
+    font-weight: bold; 
+}
+
+.card-text {
+    color: #555;
+}
