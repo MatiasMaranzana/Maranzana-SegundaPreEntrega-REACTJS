@@ -8,7 +8,7 @@ const NavBar = () => {
 return (
     <header >
         <Link to="/">
-            <img src="../public/logo.gif" alt="logo" />
+            <img src="./public/logo.gif" alt="logo" />
         </Link>
 
         <nav>
