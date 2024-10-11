@@ -2,7 +2,7 @@ import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
-    apiKey: import.meta.env.apiKey.VITE_FIREBASE_API_KEY,
+    apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
     authDomain: "alma-fit-suplementos.firebaseapp.com",
     projectId: "alma-fit-suplementos",
     storageBucket: "alma-fit-suplementos.appspot.com",
